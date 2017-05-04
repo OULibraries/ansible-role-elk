@@ -4,3 +4,5 @@
 - include: hosts.yml
   sudo: yes
 
+- include: java.yml
+  sudo: yes
