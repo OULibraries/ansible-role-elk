@@ -6,3 +6,8 @@
     headers: "Cookie: gpw_e24=http:%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie"
     dest: /tmp/
     force: no
+
+- name: install JDK via RPM file with yum
+  yum:
+    name: "/tmp/jdk-8u77-linux-x64.rpm"
+    state: present
