@@ -6,3 +6,6 @@
 
 - include: java.yml
   sudo: yes
+
+- include: elasticsearch.yml
+  sudo: yes
