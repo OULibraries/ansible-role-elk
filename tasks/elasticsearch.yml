@@ -5,7 +5,7 @@
     state: present
     key: https://artifacts.elastic.co/GPG-KEY-elasticsearch
 
-- name: Download Elastichsearch 5.1
+- name: Download Elasticsearch 5.1
   get_url:
     url: https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.1.1.rpm
     dest: /tmp/
@@ -15,3 +15,53 @@
   yum:
     name: "/tmp/elasticsearch-5.1.1.rpm"
     state: present
+
+- name: Enable Memory Lock for Elasticsearch
+  replace:
+    path: '/etc/elasticsearch/elasticsearch.yml
+    regexp: '#bootstrap.memory_lock: true'
+    replace: 'bootstrap.memory_lock: true'
+    backup: yes
+
+- name: Enable Network Host for Elasticsearch
+  replace:
+    path: '/etc/elasticsearch/elasticsearch.yml
+    regexp: '#network.host: localhost'
+    replace: 'network.host: 0.0.0.0'
+    backup: yes
+
+- name: Enable HTTP Port for Elasticsearch
+  replace:
+    path: '/etc/elasticsearch/elasticsearch.yml
+    regexp: '#http.port: 9200'
+    replace: 'http/port: 9200'
+    backup: yes
+
+- name: Configure LimitMEMLOCK for Elasticsearch
+  replace:
+    path: '/usr/lib/systemd/system/elasticsearch.service
+    regexp: '#LimitMEMLOCK=infinity'
+    replace: 'LimitMEMLOCK=infinity'
+    backup: yes
+
+- name: Configure Max Memory Lock for Elasticsearch
+  replace:
+    path: '/etc/sysconfig/elasticsearch
+    regexp: '#MAX_LOCKED_MEMORY=unlimted'
+    replace: 'MAX_LOCKED_MEMORY=unlimited'
+    backup: yes
+
+- name: Reload Daemon
+  notify: Reload Daemon
+
+- name: Enable Elasticsearch
+  notify: Enable Elasticsearch
+
+- name: Start Elasticsearch
+  notify: Start Elasticsearch
+
+
+
+
+
+
