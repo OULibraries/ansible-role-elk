@@ -18,50 +18,46 @@
 
 - name: Enable Memory Lock for Elasticsearch
   replace:
-    path: '/etc/elasticsearch/elasticsearch.yml
+    path: '/etc/elasticsearch/elasticsearch.yml'
     regexp: '#bootstrap.memory_lock: true'
     replace: 'bootstrap.memory_lock: true'
     backup: yes
 
 - name: Enable Network Host for Elasticsearch
   replace:
-    path: '/etc/elasticsearch/elasticsearch.yml
+    path: '/etc/elasticsearch/elasticsearch.yml'
     regexp: '#network.host: localhost'
     replace: 'network.host: 0.0.0.0'
     backup: yes
 
 - name: Enable HTTP Port for Elasticsearch
   replace:
-    path: '/etc/elasticsearch/elasticsearch.yml
+    path: '/etc/elasticsearch/elasticsearch.yml'
     regexp: '#http.port: 9200'
-    replace: 'http/port: 9200'
+    replace: 'http.port: 9200'
     backup: yes
 
 - name: Configure LimitMEMLOCK for Elasticsearch
   replace:
-    path: '/usr/lib/systemd/system/elasticsearch.service
+    path: '/usr/lib/systemd/system/elasticsearch.service'
     regexp: '#LimitMEMLOCK=infinity'
     replace: 'LimitMEMLOCK=infinity'
     backup: yes
 
 - name: Configure Max Memory Lock for Elasticsearch
   replace:
-    path: '/etc/sysconfig/elasticsearch
+    path: '/etc/sysconfig/elasticsearch'
     regexp: '#MAX_LOCKED_MEMORY=unlimted'
     replace: 'MAX_LOCKED_MEMORY=unlimited'
     backup: yes
 
-- name: Reload Daemon
-  notify: Reload Daemon
-
 - name: Enable Elasticsearch
-  notify: Enable Elasticsearch
+  systemd:
+    name: elasticsearch
+    daemon_reload: yes
+    enabled: yes
 
 - name: Start Elasticsearch
-  notify: Start Elasticsearch
-
-
-
-
-
-
+  systemd:
+    name: elasticsearch
+    state: started
