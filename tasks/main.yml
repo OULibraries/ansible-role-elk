@@ -12,3 +12,6 @@
 
 - include: kibana.yml
   sudo: yes
+
+- include: nginx.yml
+  sudo: yes

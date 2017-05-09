@@ -1,0 +1,12 @@
+---
+
+- name: Install NGINX with yum
+  yum:
+    name: "nginx"
+    state: present
+
+- name: Install httpd-tools with yum
+  yum:
+    name: "httpd-tools"
+    state: present
+
