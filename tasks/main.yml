@@ -10,5 +10,5 @@
 - include: elasticsearch.yml
   sudo: yes
 
-- include: kibana,yml
+- include: kibana.yml
   sudo: yes
