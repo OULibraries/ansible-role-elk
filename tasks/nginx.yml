@@ -38,3 +38,14 @@
     mode: 0640
     crypt_scheme: apr_md5_crypt
 
+- name: Enable NGINX
+  systemd:
+    name: nginx
+    daemon_reload: yes
+    enabled: yes
+
+- name: Start NGINX
+  systemd:
+    name: nginx
+    state: started
+
