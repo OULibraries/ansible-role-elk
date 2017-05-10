@@ -10,3 +10,11 @@
     name: "httpd-tools"
     state: present
 
+- name: Insert NGINX Config file
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+    mode: 0644
+    owner: root
+    group: wheel
+    backup: yes
