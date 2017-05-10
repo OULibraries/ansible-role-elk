@@ -10,7 +10,7 @@
     name: "httpd-tools"
     state: present
 
-- name: Insert NGINX Config file
+- name: Insert NGINX Config Template
   template:
     src: nginx.conf.j2
     dest: /etc/nginx/nginx.conf
@@ -18,3 +18,13 @@
     owner: root
     group: wheel
     backup: yes
+
+- name: Insert Virtual Host Config Template
+  template:
+    src: kibana.conf.j2
+    dest: /etc/nginx/conf.d/kibana.conf
+    mode: 0644
+    owner: root
+    group: wheel
+    backup: yes
+
