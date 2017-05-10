@@ -28,6 +28,11 @@
     group: wheel
     backup: yes
 
+- name: Install python-passlib with yum
+  yum:
+    name: "python-passlib"
+    state: present
+
 - name: Create WebGUI Password
   htpasswd:
     path: /etc/nginx/
