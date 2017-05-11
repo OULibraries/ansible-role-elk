@@ -12,7 +12,7 @@
     state: present
 
 - lineinfile:
-    path: /etc/httpd/conf/httpd.conf
+    path: /etc/pki/tls/openssl.cnf
     regexp: 'v3_ca'
     insertafter: '[ v3_ca ]'
     line: 'subjectAltName = IP: "{{ elk_server_ip }}"'
