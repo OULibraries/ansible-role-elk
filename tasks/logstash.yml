@@ -15,6 +15,7 @@
     path: /etc/pki/tls/openssl.cnf
     regexp: '^[ v3_ca ]'
     insertafter: '[ v3_ca ]'
+    insertbefore: '^# Extensions for a typical CA'
     line: 'subjectAltName = IP: "{{ elk_server_ip }}"'
     backup: yes
 
