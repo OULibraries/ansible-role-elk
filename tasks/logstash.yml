@@ -1,0 +1,20 @@
+---
+
+- name: Download Logstash 5.1
+  get_url:
+    url: https://artifacts.elastic.co/downloads/logstash/logstash-5.1.1.rpm
+    dest: /tmp/
+    force: no
+
+- name: Install Logstash via RPM file with yum
+  yum:
+    name: "/tmp/logstash-5.1.1.rpm"
+    state: present
+
+- lineinfile:
+    path: /etc/httpd/conf/httpd.conf
+    regexp: 'v3_ca'
+    insertafter: '[ v3_ca ]'
+    line: 'subjectAltName = IP: "{{ elk_server_ip }}"'
+
+

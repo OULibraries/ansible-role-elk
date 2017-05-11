@@ -35,7 +35,7 @@
 
 - name: Create WebGUI Password
   htpasswd:
-    path: /etc/nginx/
+    path: /etc/nginx/.kibana-user
     name: "{{ elk_web_username }}"
     password: "{{ elk_web_passwd }}"
     owner: root

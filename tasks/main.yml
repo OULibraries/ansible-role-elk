@@ -15,3 +15,6 @@
 
 - include: nginx.yml
   sudo: yes
+
+- include: logstash.yml
+  sudo: yes
