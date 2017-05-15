@@ -26,7 +26,7 @@
   command: >
      openssl req -config /etc/pki/tls/openssl.cnf -x509 -days 3650 -batch -nodes -newkey rsa:2048 -keyout /etc/pki/tls/private/logstash-forwarder.key -out /etc/pki/tls/certs/logstash-forwarder.crt
 
- name: Insert Filebeat Input Config Template
+- name: Insert Filebeat Input Config Template
   template:
     src: filebeat-input.conf.j2
     dest: /etc/logstash/conf.d/filebeat-input.conf
@@ -35,7 +35,7 @@
     group: wheel
     backup: yes
 
- name: Insert Syslog Filter Config Template
+- name: Insert Syslog Filter Config Template
   template:
     src: syslog-filter.conf.j2
     dest: /etc/logstash/conf.d/syslog-filter.conf
@@ -44,7 +44,7 @@
     group: wheel
     backup: yes
 
- name: Insert Elastichsearch Output Config Template
+- name: Insert Elastichsearch Output Config Template
   template:
     src: output-elasticsearch.conf.j2
     dest: /etc/logstash/conf.d/output-elasticsearch.conf
@@ -62,6 +62,6 @@
 - name: Start Logstash
   systemd:
     name: logstash
-state: started
+    state: started
 
 
