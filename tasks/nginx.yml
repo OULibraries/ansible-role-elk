@@ -40,7 +40,7 @@
     password: "{{ elk_web_passwd }}"
     owner: root
     group: wheel
-    mode: 0640
+    mode: 0644
     crypt_scheme: apr_md5_crypt
 
 - name: Enable NGINX
