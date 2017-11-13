@@ -2,12 +2,12 @@
 
 - name: Download Java 
   get_url:
-    url: "http://download.oracle.com/otn-pub/java/jdk/8u77-b02/jdk-8u77-linux-x64.rpm"
+    url: "http://download.oracle.com/otn-pub/java/jdk/8u151-b12/e758a0de34e24606bca991d704f6dcbf/jdk-8u151-linux-x64.rpm"
     headers: "Cookie: gpw_e24=http:%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie"
     dest: /tmp/
     force: no
 
 - name: install JDK via RPM file with yum
   yum:
-    name: "/tmp/jdk-8u77-linux-x64.rpm"
+    name: "/tmp/jdk-8u151-linux-x64.rpm"
     state: present
