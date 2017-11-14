@@ -43,3 +43,8 @@
     name: kibana
     state: started
 
+- name: Set SElinux flag to ON for httpd_can_network_connect 
+  seboolean:
+    name: httpd_can_network_connect
+    state: yes
+    persistent: yes
